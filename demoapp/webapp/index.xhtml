@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+            
+    <h:head>
+        <title>Demo APP Test</title>       
+    </h:head>
+    <h:body>
+        <h:form>
+       		<h:panelGrid id="first" columns="2" cellpadding="10" border="1">
+        		<h:outputLabel value="HTTP GET:" for="countryURL"/>
+        		<h:inputText id="countryURL" value="#{countryBean.countryResource}" style="width: 400px" required="true"/>
+        		<h:outputLabel value="Code:" for="countryCode"/>
+        		<h:panelGroup>
+   					<h:inputText id="countryCode" value="#{countryBean.code}" size="2" style="width: 50px" title="Example: Code: PT"/>
+   					<h:outputLabel value="*Example: PT" />
+   				</h:panelGroup>
+        		<h:commandButton value="Search!" action="#{countryBean.callCountryRestWSAction()}"/>
+        		<h:commandButton value="Clear!" action="#{countryBean.clear()}"/>
+        		<f:facet name="footer">
+        			<h:panelGroup>
+        				<h:outputLabel value="Result:"/>
+        				<h:outputText id="result" value="#{countryBean.result}"/>
+        			</h:panelGroup>
+        		</f:facet>
+       		</h:panelGrid>
+       		
+       		<br/>
+     		<h:panelGrid id="second" columns="2" cellpadding="10" border="1">
+        		<h:outputLabel value="HTTP GET (All):" for="allCountriesURL"/>
+        		<h:inputText id="allCountriesURL" value="#{countryBean.allCountriesResource}" style="width: 400px" required="true"/>
+        		<h:commandButton value="Search!" action="#{countryBean.callAllCountriesRestWSAction()}"/>
+        		<h:commandButton value="Clear!" action="#{countryBean.clear()}"/>  
+        		<f:facet name="footer">
+        			<h:panelGroup>
+        				<h:outputLabel value="Result:"/>
+        				<h:inputTextarea value="#{countryBean.resultAll}" style="width: 700px; height: 200px" />
+        			</h:panelGroup>
+        		</f:facet>      	
+       		</h:panelGrid>
+           		            
+            
+        </h:form>
+    </h:body>
+</html>
